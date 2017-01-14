@@ -20,10 +20,11 @@ namespace Semestralka
         public VyberZJidel()
         {
             InitializeComponent();
+            
         }
 
         private void VyberZJidel_Load(object sender, EventArgs e)
-        {
+        { 
             pripojeni.ConnectionString = databaze.ulozeniDatabaze();
             pripojeni.Open();
             try
@@ -42,6 +43,7 @@ namespace Semestralka
                     MessageBox.Show("Žádná jídla nejsou v databázi");
                 }
                 pripojeni.Close();
+
             }
             catch (Exception)
             {
@@ -49,20 +51,12 @@ namespace Semestralka
                 MessageBox.Show("Problem s vypisem databaze!");
             }
         }
-
-
         private void buttonZpet_Click(object sender, EventArgs e)
         {
             Hide();
             HlavniMenu hlavniMenu = new HlavniMenu();
             hlavniMenu.Show();
         }
-
-        private void textBoxSelectJidlo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
-        }
-
         private void buttonPridej_Click(object sender, EventArgs e)
         {
             try
@@ -84,6 +78,7 @@ namespace Semestralka
 
                         MessageBox.Show("Úspěšně přidáno do dnešního jídelníčku!");
 
+                        textBoxSelectJidlo.Text = "";
                     }
                     catch
                     {
@@ -94,15 +89,12 @@ namespace Semestralka
                 {
                     MessageBox.Show("Takové jídlo v databázi není!");
                 }
-
-                
             }
             catch
             {
                 MessageBox.Show("Zadávat se dají pouze čísla!");
             }
         }
-
         private void VyberZJidel_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();

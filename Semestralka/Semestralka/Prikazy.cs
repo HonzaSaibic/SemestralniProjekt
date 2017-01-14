@@ -222,7 +222,7 @@ namespace Semestralka
                 SQLiteDataReader reader = vyber.ExecuteReader();
                 while (reader.Read())
                 {
-                    ObjektAktualniPrijem.kalorie = Convert.ToInt32(reader["kalorie"]);
+                    ObjektAktualniPrijem.pridanyKalorie = Convert.ToInt32(reader["kalorie"]);
                     ObjektAktualniPrijem.pridanyProteiny = Convert.ToInt32(reader["proteiny"]);
                     ObjektAktualniPrijem.pridanySacharidy = Convert.ToInt32(reader["sacharidy"]);
                     ObjektAktualniPrijem.pridanyTuky = Convert.ToInt32(reader["tuky"]);

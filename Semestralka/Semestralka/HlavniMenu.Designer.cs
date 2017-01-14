@@ -296,6 +296,7 @@
             this.Controls.Add(this.buttonVlozitJidlo);
             this.Controls.Add(this.buttonVybratJidlo);
             this.Name = "HlavniMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hlavní menu";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HlavniMenu_FormClosed);
             this.Load += new System.EventHandler(this.HlavniMenu_Load);

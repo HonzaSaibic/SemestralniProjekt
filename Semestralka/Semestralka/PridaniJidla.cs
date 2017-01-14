@@ -26,24 +26,31 @@ namespace Semestralka
             // Pokud je metoda KontrolaJidla false, znamena to, ze takove jmeno neni v databazi
             if (prikaz.KontrolaJidla(textBoxJmeno.Text.ToLower()) == false)
             {
-                // Pokud je InsertJidlo true, znamena to, ze vse probehlo v poradku a muzu tedy pridavat jidlo
-                if (prikaz.InsertJidlo(textBoxJmeno.Text,Convert.ToInt32(textBoxKalorie.Text),Convert.ToInt32(textBoxProteiny.Text),
-                    Convert.ToInt32(textBoxSacharidy.Text), Convert.ToInt32(textBoxTuky.Text)) == true)
+                try
                 {
-                    prikaz.InsertJidlo(textBoxJmeno.Text, Convert.ToInt32(textBoxKalorie.Text), Convert.ToInt32(textBoxProteiny.Text),
-                        Convert.ToInt32(textBoxSacharidy.Text), Convert.ToInt32(textBoxTuky.Text));
+                    // Pokud je InsertJidlo true, znamena to, ze vse probehlo v poradku a muzu tedy pridavat jidlo
+                    if (prikaz.InsertJidlo(textBoxJmeno.Text, Convert.ToInt32(textBoxKalorie.Text), Convert.ToInt32(textBoxProteiny.Text),
+                        Convert.ToInt32(textBoxSacharidy.Text), Convert.ToInt32(textBoxTuky.Text)) == true)
+                    {
+                        prikaz.InsertJidlo(textBoxJmeno.Text, Convert.ToInt32(textBoxKalorie.Text), Convert.ToInt32(textBoxProteiny.Text),
+                            Convert.ToInt32(textBoxSacharidy.Text), Convert.ToInt32(textBoxTuky.Text));
 
-                    MessageBox.Show("Úpěšně uloženo!");
+                        MessageBox.Show("Úpěšně uloženo!");
 
-                    textBoxJmeno.Text = "";
-                    textBoxKalorie.Text = "";
-                    textBoxProteiny.Text = "";
-                    textBoxSacharidy.Text = "";
-                    textBoxTuky.Text = "";
+                        textBoxJmeno.Text = "";
+                        textBoxKalorie.Text = "";
+                        textBoxProteiny.Text = "";
+                        textBoxSacharidy.Text = "";
+                        textBoxTuky.Text = "";
+                    }
+                    else
+                    {
+                        MessageBox.Show("Problém s databází!");
+                    }
                 }
-                else
+                catch (FormatException)
                 {
-                    MessageBox.Show("Překontrolujte si zadané hodnoty.");
+                    MessageBox.Show("Chybně zadané údaje! Nutriční hodnoty můžou být zadány pouze číselně!");
                 }
             }
             else

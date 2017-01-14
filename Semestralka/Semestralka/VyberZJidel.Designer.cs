@@ -60,7 +60,6 @@
             this.textBoxSelectJidlo.Name = "textBoxSelectJidlo";
             this.textBoxSelectJidlo.Size = new System.Drawing.Size(240, 20);
             this.textBoxSelectJidlo.TabIndex = 18;
-            this.textBoxSelectJidlo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSelectJidlo_KeyPress);
             // 
             // buttonZpet
             // 
@@ -94,6 +93,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBoxSelectJidlo);
             this.Name = "VyberZJidel";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VyberZJidel";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VyberZJidel_FormClosed);
             this.Load += new System.EventHandler(this.VyberZJidel_Load);

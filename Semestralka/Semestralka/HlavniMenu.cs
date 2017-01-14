@@ -54,9 +54,9 @@ namespace Semestralka
 
         private void buttonVybratJidlo_Click(object sender, EventArgs e)
         {
-            Hide();
             VyberZJidel vyberZJidel = new VyberZJidel();
             vyberZJidel.Show();
+            Hide();
         }
 
         private void buttonDenniPrijem_Click(object sender, EventArgs e)

@@ -182,6 +182,7 @@
             this.Controls.Add(this.textBoxJmeno);
             this.Controls.Add(this.buttonVlozit);
             this.Name = "PridaniJidla";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PridaniJidla";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PridaniJidla_FormClosed);
             this.ResumeLayout(false);

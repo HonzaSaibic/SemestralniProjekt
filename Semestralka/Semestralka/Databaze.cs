@@ -15,8 +15,6 @@ namespace Semestralka
         {
             string soubor = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);           
             return "Data Source=" + soubor + "\\Jidla.sqlite; Version=3; New=True";
-        }
-
-        
+        }      
     }
 }

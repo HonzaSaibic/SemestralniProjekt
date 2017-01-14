@@ -162,6 +162,7 @@
             this.Controls.Add(this.textBoxProteiny);
             this.Controls.Add(this.buttonZpet);
             this.Name = "NastaveniPrijmu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nastavení denního příjmu";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NastaveniPrijmu_FormClosed);
             this.Load += new System.EventHandler(this.NastaveniPrijmu_Load);
