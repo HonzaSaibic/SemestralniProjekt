@@ -13,7 +13,9 @@ namespace Semestralka
         Databaze databaze = new Databaze();
         SQLiteConnection pripojeni = new SQLiteConnection();
 
-        public bool tabulka()
+
+
+        public bool CreateTabulka()
         {
             pripojeni.ConnectionString = databaze.ulozeniDatabaze();
             pripojeni.Open();
@@ -32,7 +34,7 @@ namespace Semestralka
             }
         }
 
-        public bool insert(string jmeno, string proteiny, string sacharidy, string tuky)
+        public bool Insert(string jmeno, string proteiny, string sacharidy, string tuky)
         {
             pripojeni.ConnectionString = databaze.ulozeniDatabaze();
             pripojeni.Open();
@@ -52,21 +54,11 @@ namespace Semestralka
             }
             
         }
-        public void select ()
+
+        public bool KontrolaJidla (string jmeno)
         {
-            pripojeni.ConnectionString = databaze.ulozeniDatabaze();
-            pripojeni.Open();
-            string select = "SELECT * FROM jidlo ";
-            SQLiteCommand prikaz = new SQLiteCommand(select, pripojeni);
-            SQLiteDataReader reader = prikaz.ExecuteReader();
-            while (reader.Read())
-            {
-                
-            }
-            
-            
-            //return jmeno + proteiny + sacharidy + tuky;
+
         }
-       
-    }
+
+        }
 }
