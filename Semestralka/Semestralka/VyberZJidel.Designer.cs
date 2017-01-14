@@ -37,7 +37,7 @@
             // 
             // buttonVyberToto
             // 
-            this.buttonVyberToto.Location = new System.Drawing.Point(173, 59);
+            this.buttonVyberToto.Location = new System.Drawing.Point(173, 153);
             this.buttonVyberToto.Name = "buttonVyberToto";
             this.buttonVyberToto.Size = new System.Drawing.Size(210, 23);
             this.buttonVyberToto.TabIndex = 20;
@@ -48,14 +48,14 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 88);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 182);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(371, 384);
             this.dataGridView1.TabIndex = 19;
             // 
             // textBoxSelectJidlo
             // 
-            this.textBoxSelectJidlo.Location = new System.Drawing.Point(12, 62);
+            this.textBoxSelectJidlo.Location = new System.Drawing.Point(13, 153);
             this.textBoxSelectJidlo.Name = "textBoxSelectJidlo";
             this.textBoxSelectJidlo.Size = new System.Drawing.Size(155, 20);
             this.textBoxSelectJidlo.TabIndex = 18;
@@ -75,7 +75,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(395, 484);
+            this.ClientSize = new System.Drawing.Size(395, 578);
             this.Controls.Add(this.buttonZpet);
             this.Controls.Add(this.buttonVyberToto);
             this.Controls.Add(this.dataGridView1);

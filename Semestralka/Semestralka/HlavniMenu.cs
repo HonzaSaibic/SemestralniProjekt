@@ -27,10 +27,17 @@ namespace Semestralka
             else
                 MessageBox.Show("Problém s vytvářením tabulky!");
 
+            prikaz.NahraniDenniPrijmu();
+
             // Nastaveni parametru
-            labelNastavenyProtein.Text = Convert.ToString(DenniPrijem.proteiny);
-            labelNastavenySacharid.Text = Convert.ToString(DenniPrijem.sacharidy);
-            labelNastavenyTuk.Text = Convert.ToString(DenniPrijem.tuky);
+            labelNastavenyProtein.Text = Convert.ToString(ObjektDenniPrijem.proteiny);
+            labelNastavenySacharid.Text = Convert.ToString(ObjektDenniPrijem.sacharidy);
+            labelNastavenyTuk.Text = Convert.ToString(ObjektDenniPrijem.tuky); 
+
+            labelAktualniProtein.Text = Convert.ToString(ObjektAktualniPrijem.proteiny);
+            labelAktualniSacharid.Text = Convert.ToString(ObjektAktualniPrijem.sacharidy);
+            labelAktualniTuk.Text = Convert.ToString(ObjektAktualniPrijem.tuky);
+
         }          
           
         private void buttonVlozitJidlo_Click(object sender, EventArgs e)

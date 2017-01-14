@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Semestralka
 {
-    public static class DenniPrijem
+    public static class ObjektDenniPrijem
     {
         public static int proteiny { get; set; }
         public static int sacharidy { get; set; }

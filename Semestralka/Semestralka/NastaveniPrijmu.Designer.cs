@@ -120,7 +120,7 @@
             this.Controls.Add(this.textBoxProteiny);
             this.Controls.Add(this.buttonZpet);
             this.Name = "NastaveniPrijmu";
-            this.Text = "NastaveniPrijmu";
+            this.Text = "+";
             this.Load += new System.EventHandler(this.NastaveniPrijmu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

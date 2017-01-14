@@ -12,6 +12,8 @@ namespace Semestralka
 {
     public partial class NastaveniPrijmu : Form
     {
+        Prikazy prikaz = new Prikazy();
+
         public NastaveniPrijmu()
         {
             InitializeComponent();
@@ -26,17 +28,25 @@ namespace Semestralka
         {
             try
             {
-                DenniPrijem.proteiny = Convert.ToInt32(textBoxProteiny.Text);
-                DenniPrijem.sacharidy = Convert.ToInt32(textBoxProteiny.Text);
-                DenniPrijem.tuky = Convert.ToInt32(textBoxTuky.Text);
+                ObjektDenniPrijem.proteiny = Convert.ToInt32(textBoxProteiny.Text);
+                ObjektDenniPrijem.sacharidy = Convert.ToInt32(textBoxSacharidy.Text);
+                ObjektDenniPrijem.tuky = Convert.ToInt32(textBoxTuky.Text);
 
                 MessageBox.Show("Denní příjem nastaven!");
+
+                try
+                {
+                    prikaz.VymazaniPoslednihoPrijmu();
+                    prikaz.InsertDenniPrijem(Convert.ToInt32(textBoxProteiny.Text), Convert.ToInt32(textBoxSacharidy.Text), Convert.ToInt32(textBoxTuky.Text));
+                }
+                catch
+                {
+                    MessageBox.Show("Problem s ulozenim do databaze! Zkontrolujte zadané údaje");
+                }
+
                 Hide();
                 HlavniMenu hlavniMenu = new HlavniMenu();
                 hlavniMenu.Show();
-            /*    textBoxProteiny.Text = "";
-                textBoxSacharidy.Text = "";
-                textBoxTuky.Text = "";*/
             }
             catch
             {
