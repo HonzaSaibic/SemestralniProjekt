@@ -15,6 +15,7 @@ namespace Semestralka
     {
         SQLiteConnection pripojeni = new SQLiteConnection();
         Databaze databaze = new Databaze();
+        Prikazy prikaz = new Prikazy();
 
         public VyberZJidel()
         {
@@ -27,7 +28,7 @@ namespace Semestralka
             pripojeni.Open();
             try
             {
-                SQLiteCommand select = new SQLiteCommand("SELECT * FROM jidlo", pripojeni);
+                SQLiteCommand select = new SQLiteCommand("SELECT jmeno AS Jidlo ,proteiny AS 'Protein na 100g',sacharidy AS 'Sacharidy na 100g',tuky AS 'Tuky na 100g' FROM jidlo", pripojeni);
                 SQLiteDataAdapter da = new SQLiteDataAdapter();
                 DataTable dt = new DataTable();
                 da.SelectCommand = select;
@@ -49,33 +50,6 @@ namespace Semestralka
             }
         }
 
-        private void buttonVyberToto_Click(object sender, EventArgs e)
-        {
-            pripojeni.ConnectionString = databaze.ulozeniDatabaze();
-            pripojeni.Open();
-            try
-            {
-                SQLiteCommand cmd = new SQLiteCommand("SELECT * FROM jidlo WHERE jmeno='" + textBoxSelectJidlo.Text.ToLower() + "'", pripojeni);
-                SQLiteDataAdapter da = new SQLiteDataAdapter();
-                DataTable dt = new DataTable();
-                da.SelectCommand = cmd;
-                da.Fill(dt);
-                if (dt.Rows.Count > 0)
-                {
-                    dataGridView1.DataSource = dt;
-                }
-                else
-                {
-                    MessageBox.Show("Takový produkt není v databázi");
-                }
-                pripojeni.Close();
-            }
-            catch
-            {
-                pripojeni.Close();
-                MessageBox.Show("Problém s databází");
-            }
-        }
 
         private void buttonZpet_Click(object sender, EventArgs e)
         {
@@ -87,6 +61,50 @@ namespace Semestralka
         private void textBoxSelectJidlo_KeyPress(object sender, KeyPressEventArgs e)
         {
             
+        }
+
+        private void buttonPridej_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                prikaz.NahraniVybranehoJidla(textBoxSelectJidlo.Text);
+               
+                if (prikaz.KontrolaJidla(textBoxSelectJidlo.Text) == true)
+                {
+                    try
+                    {
+                        ObjektAktualniPrijem.proteiny = ObjektAktualniPrijem.pridanyProteiny + ObjektAktualniPrijem.proteiny;
+                        ObjektAktualniPrijem.sacharidy = ObjektAktualniPrijem.pridanySacharidy + ObjektAktualniPrijem.sacharidy;
+                        ObjektAktualniPrijem.tuky = ObjektAktualniPrijem.pridanyTuky + ObjektAktualniPrijem.tuky;
+
+                        prikaz.VymazaniAktualnihoPrijmu();
+                        prikaz.InsertAktualniPrijem(Convert.ToInt32(ObjektAktualniPrijem.proteiny),
+                            Convert.ToInt32(ObjektAktualniPrijem.sacharidy), Convert.ToInt32(ObjektAktualniPrijem.tuky));
+
+                        MessageBox.Show("Úspěšně přidáno do dnešního jídelníčku!");
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Problem s databazi! Zkuste prosim znovu");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Takové jídlo v databázi není!");
+                }
+
+                
+            }
+            catch
+            {
+                MessageBox.Show("Zadávat se dají pouze čísla!");
+            }
+        }
+
+        private void VyberZJidel_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

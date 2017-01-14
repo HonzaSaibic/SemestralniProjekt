@@ -45,13 +45,15 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.buttonReset = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonVybratJidlo
             // 
-            this.buttonVybratJidlo.Location = new System.Drawing.Point(53, 464);
+            this.buttonVybratJidlo.Location = new System.Drawing.Point(12, 261);
             this.buttonVybratJidlo.Name = "buttonVybratJidlo";
-            this.buttonVybratJidlo.Size = new System.Drawing.Size(112, 23);
+            this.buttonVybratJidlo.Size = new System.Drawing.Size(116, 58);
             this.buttonVybratJidlo.TabIndex = 1;
             this.buttonVybratJidlo.Text = "Vybrat uložené jídlo";
             this.buttonVybratJidlo.UseVisualStyleBackColor = true;
@@ -59,9 +61,9 @@
             // 
             // buttonVlozitJidlo
             // 
-            this.buttonVlozitJidlo.Location = new System.Drawing.Point(212, 464);
+            this.buttonVlozitJidlo.Location = new System.Drawing.Point(162, 261);
             this.buttonVlozitJidlo.Name = "buttonVlozitJidlo";
-            this.buttonVlozitJidlo.Size = new System.Drawing.Size(112, 23);
+            this.buttonVlozitJidlo.Size = new System.Drawing.Size(116, 58);
             this.buttonVlozitJidlo.TabIndex = 17;
             this.buttonVlozitJidlo.Text = "Uložit nové jídlo";
             this.buttonVlozitJidlo.UseVisualStyleBackColor = true;
@@ -69,9 +71,9 @@
             // 
             // buttonDenniPrijem
             // 
-            this.buttonDenniPrijem.Location = new System.Drawing.Point(53, 70);
+            this.buttonDenniPrijem.Location = new System.Drawing.Point(231, 17);
             this.buttonDenniPrijem.Name = "buttonDenniPrijem";
-            this.buttonDenniPrijem.Size = new System.Drawing.Size(139, 23);
+            this.buttonDenniPrijem.Size = new System.Drawing.Size(60, 23);
             this.buttonDenniPrijem.TabIndex = 18;
             this.buttonDenniPrijem.Text = "Nastavit denní příjem";
             this.buttonDenniPrijem.UseVisualStyleBackColor = true;
@@ -80,7 +82,7 @@
             // labelTuky
             // 
             this.labelTuky.AutoSize = true;
-            this.labelTuky.Location = new System.Drawing.Point(50, 335);
+            this.labelTuky.Location = new System.Drawing.Point(12, 222);
             this.labelTuky.Name = "labelTuky";
             this.labelTuky.Size = new System.Drawing.Size(94, 13);
             this.labelTuky.TabIndex = 24;
@@ -89,7 +91,7 @@
             // labelSacharidy
             // 
             this.labelSacharidy.AutoSize = true;
-            this.labelSacharidy.Location = new System.Drawing.Point(50, 252);
+            this.labelSacharidy.Location = new System.Drawing.Point(12, 139);
             this.labelSacharidy.Name = "labelSacharidy";
             this.labelSacharidy.Size = new System.Drawing.Size(119, 13);
             this.labelSacharidy.TabIndex = 23;
@@ -98,7 +100,7 @@
             // labelProteiny
             // 
             this.labelProteiny.AutoSize = true;
-            this.labelProteiny.Location = new System.Drawing.Point(50, 173);
+            this.labelProteiny.Location = new System.Drawing.Point(12, 60);
             this.labelProteiny.Name = "labelProteiny";
             this.labelProteiny.Size = new System.Drawing.Size(111, 13);
             this.labelProteiny.TabIndex = 22;
@@ -107,7 +109,7 @@
             // labelNastavenyProtein
             // 
             this.labelNastavenyProtein.AutoSize = true;
-            this.labelNastavenyProtein.Location = new System.Drawing.Point(266, 173);
+            this.labelNastavenyProtein.Location = new System.Drawing.Point(228, 60);
             this.labelNastavenyProtein.Name = "labelNastavenyProtein";
             this.labelNastavenyProtein.Size = new System.Drawing.Size(35, 13);
             this.labelNastavenyProtein.TabIndex = 25;
@@ -116,7 +118,7 @@
             // labelNastavenySacharid
             // 
             this.labelNastavenySacharid.AutoSize = true;
-            this.labelNastavenySacharid.Location = new System.Drawing.Point(266, 252);
+            this.labelNastavenySacharid.Location = new System.Drawing.Point(228, 139);
             this.labelNastavenySacharid.Name = "labelNastavenySacharid";
             this.labelNastavenySacharid.Size = new System.Drawing.Size(35, 13);
             this.labelNastavenySacharid.TabIndex = 26;
@@ -125,7 +127,7 @@
             // labelNastavenyTuk
             // 
             this.labelNastavenyTuk.AutoSize = true;
-            this.labelNastavenyTuk.Location = new System.Drawing.Point(266, 335);
+            this.labelNastavenyTuk.Location = new System.Drawing.Point(228, 222);
             this.labelNastavenyTuk.Name = "labelNastavenyTuk";
             this.labelNastavenyTuk.Size = new System.Drawing.Size(35, 13);
             this.labelNastavenyTuk.TabIndex = 27;
@@ -134,7 +136,7 @@
             // labelAktualniProtein
             // 
             this.labelAktualniProtein.AutoSize = true;
-            this.labelAktualniProtein.Location = new System.Drawing.Point(225, 173);
+            this.labelAktualniProtein.Location = new System.Drawing.Point(187, 60);
             this.labelAktualniProtein.Name = "labelAktualniProtein";
             this.labelAktualniProtein.Size = new System.Drawing.Size(35, 13);
             this.labelAktualniProtein.TabIndex = 28;
@@ -143,7 +145,7 @@
             // labelAktualniSacharid
             // 
             this.labelAktualniSacharid.AutoSize = true;
-            this.labelAktualniSacharid.Location = new System.Drawing.Point(225, 252);
+            this.labelAktualniSacharid.Location = new System.Drawing.Point(187, 139);
             this.labelAktualniSacharid.Name = "labelAktualniSacharid";
             this.labelAktualniSacharid.Size = new System.Drawing.Size(35, 13);
             this.labelAktualniSacharid.TabIndex = 29;
@@ -152,7 +154,7 @@
             // labelAktualniTuk
             // 
             this.labelAktualniTuk.AutoSize = true;
-            this.labelAktualniTuk.Location = new System.Drawing.Point(225, 335);
+            this.labelAktualniTuk.Location = new System.Drawing.Point(187, 222);
             this.labelAktualniTuk.Name = "labelAktualniTuk";
             this.labelAktualniTuk.Size = new System.Drawing.Size(35, 13);
             this.labelAktualniTuk.TabIndex = 30;
@@ -161,7 +163,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(257, 173);
+            this.label4.Location = new System.Drawing.Point(219, 60);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(12, 13);
             this.label4.TabIndex = 31;
@@ -170,7 +172,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(257, 252);
+            this.label5.Location = new System.Drawing.Point(219, 139);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(12, 13);
             this.label5.TabIndex = 32;
@@ -179,7 +181,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(257, 335);
+            this.label6.Location = new System.Drawing.Point(219, 222);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(12, 13);
             this.label6.TabIndex = 33;
@@ -188,7 +190,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(213, 156);
+            this.label7.Location = new System.Drawing.Point(175, 43);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(47, 13);
             this.label7.TabIndex = 34;
@@ -197,17 +199,38 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(266, 156);
+            this.label8.Location = new System.Drawing.Point(228, 43);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 13);
+            this.label8.Size = new System.Drawing.Size(66, 13);
             this.label8.TabIndex = 35;
-            this.label8.Text = "Nastavený";
+            this.label8.Text = "Požadovaný";
+            // 
+            // buttonReset
+            // 
+            this.buttonReset.Location = new System.Drawing.Point(162, 17);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(60, 23);
+            this.buttonReset.TabIndex = 36;
+            this.buttonReset.Text = "Smazat";
+            this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(219, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(12, 13);
+            this.label1.TabIndex = 37;
+            this.label1.Text = "/";
             // 
             // HlavniMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(355, 585);
+            this.ClientSize = new System.Drawing.Size(341, 376);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -227,6 +250,7 @@
             this.Controls.Add(this.buttonVybratJidlo);
             this.Name = "HlavniMenu";
             this.Text = "Hlavní menu";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.HlavniMenu_FormClosed);
             this.Load += new System.EventHandler(this.HlavniMenu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -251,6 +275,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button buttonReset;
+        private System.Windows.Forms.Label label1;
     }
 }
 

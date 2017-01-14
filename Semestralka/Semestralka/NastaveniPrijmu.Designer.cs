@@ -121,6 +121,7 @@
             this.Controls.Add(this.buttonZpet);
             this.Name = "NastaveniPrijmu";
             this.Text = "+";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NastaveniPrijmu_FormClosed);
             this.Load += new System.EventHandler(this.NastaveniPrijmu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

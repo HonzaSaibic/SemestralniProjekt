@@ -24,9 +24,15 @@ namespace Semestralka
                 string vytvoreniJidla = "CREATE TABLE IF NOT EXISTS jidlo (jmeno TEXT UNIQUE, proteiny INT, sacharidy INT, tuky INT)";
                 SQLiteCommand prikaz = new SQLiteCommand(vytvoreniJidla, pripojeni);
                 prikaz.ExecuteNonQuery();
+
                 string vytvoreniDennihoPrijmu = "CREATE TABLE IF NOT EXISTS denniPrijem (id PRIMARY KEY, proteiny INT, sacharidy INT, tuky INT)";
                 SQLiteCommand prikaz2 = new SQLiteCommand(vytvoreniDennihoPrijmu, pripojeni);
                 prikaz2.ExecuteNonQuery();
+
+                string vytvoreniAktualnihoPrijmu = "CREATE TABLE IF NOT EXISTS aktualniPrijem (id PRIMARY KEY, proteiny INT, sacharidy INT, tuky INT)";
+                SQLiteCommand prikaz3 = new SQLiteCommand(vytvoreniAktualnihoPrijmu, pripojeni);
+                prikaz3.ExecuteNonQuery();
+
                 pripojeni.Close();
                 return true;
             }
@@ -90,22 +96,70 @@ namespace Semestralka
 
         public void InsertDenniPrijem (int proteiny, int sacharidy, int tuky)
         {
-            pripojeni.ConnectionString = databaze.ulozeniDatabaze();
-            pripojeni.Open();
-            string insert = "INSERT INTO denniPrijem (id, proteiny, sacharidy, tuky) VALUES (1," + proteiny +"," + sacharidy + "," +  tuky + ")";
-            SQLiteCommand prikaz = new SQLiteCommand(insert, pripojeni);
-            prikaz.ExecuteNonQuery();
-            pripojeni.Close();           
+            try
+            {
+                pripojeni.ConnectionString = databaze.ulozeniDatabaze();
+                pripojeni.Open();
+                string insert = "INSERT INTO denniPrijem (id, proteiny, sacharidy, tuky) VALUES (1," + proteiny + "," + sacharidy + "," + tuky + ")";
+                SQLiteCommand prikaz = new SQLiteCommand(insert, pripojeni);
+                prikaz.ExecuteNonQuery();
+                pripojeni.Close();
+            }
+            finally
+            {
+                pripojeni.Close();
+            }
+        }
+
+        public void InsertAktualniPrijem(int proteiny, int sacharidy, int tuky)
+        {
+            try
+            {
+                pripojeni.ConnectionString = databaze.ulozeniDatabaze();
+                pripojeni.Open();
+                string insert = "INSERT INTO aktualniPrijem (id, proteiny, sacharidy, tuky) VALUES (1," + proteiny + "," + sacharidy + "," + tuky + ")";
+                SQLiteCommand prikaz = new SQLiteCommand(insert, pripojeni);
+                prikaz.ExecuteNonQuery();
+                pripojeni.Close();
+            }
+            finally
+            {
+                pripojeni.Close();
+            }
         }
 
         public void VymazaniPoslednihoPrijmu()
         {
-            pripojeni.ConnectionString = databaze.ulozeniDatabaze();
-            pripojeni.Open();
-            string delete = "DELETE FROM denniPrijem WHERE id=1";
-            SQLiteCommand prikaz = new SQLiteCommand(delete, pripojeni);
-            prikaz.ExecuteNonQuery();
-            pripojeni.Close();
+            try
+            {
+                pripojeni.ConnectionString = databaze.ulozeniDatabaze();
+                pripojeni.Open();
+                string delete = "DELETE FROM denniPrijem WHERE id=1";
+                SQLiteCommand prikaz = new SQLiteCommand(delete, pripojeni);
+                prikaz.ExecuteNonQuery();
+                pripojeni.Close();
+            }
+            finally
+            {
+                pripojeni.Close();
+            }
+        }
+
+        public void VymazaniAktualnihoPrijmu()
+        {
+            try
+            {
+                pripojeni.ConnectionString = databaze.ulozeniDatabaze();
+                pripojeni.Open();
+                string delete = "DELETE FROM aktualniPrijem WHERE id=1";
+                SQLiteCommand prikaz = new SQLiteCommand(delete, pripojeni);
+                prikaz.ExecuteNonQuery();
+                pripojeni.Close();
+            }
+            finally
+            {
+                pripojeni.Close();
+            }
         }
 
         public void NahraniDenniPrijmu()
@@ -130,6 +184,52 @@ namespace Semestralka
                 pripojeni.Close();
             }
 
+        }
+
+        public void NahraniAktualnihoPrijmu()
+        {
+            pripojeni.ConnectionString = databaze.ulozeniDatabaze();
+            pripojeni.Open();
+            try
+            {
+                string select = "SELECT * FROM aktualniPrijem";
+                SQLiteCommand vyber = new SQLiteCommand(select, pripojeni);
+                SQLiteDataReader reader = vyber.ExecuteReader();
+                while (reader.Read())
+                {
+                    ObjektAktualniPrijem.proteiny = Convert.ToInt32(reader["proteiny"]);
+                    ObjektAktualniPrijem.sacharidy = Convert.ToInt32(reader["sacharidy"]);
+                    ObjektAktualniPrijem.tuky = Convert.ToInt32(reader["tuky"]);
+                }
+                pripojeni.Close();
+            }
+            finally
+            {
+                pripojeni.Close();
+            }
+        }
+
+        public void NahraniVybranehoJidla(string jmeno)
+        {
+            pripojeni.ConnectionString = databaze.ulozeniDatabaze();
+            pripojeni.Open();
+            try
+            {
+                string select = "SELECT * FROM jidlo WHERE jmeno='" + jmeno + "'";
+                SQLiteCommand vyber = new SQLiteCommand(select, pripojeni);
+                SQLiteDataReader reader = vyber.ExecuteReader();
+                while (reader.Read())
+                {
+                    ObjektAktualniPrijem.pridanyProteiny = Convert.ToInt32(reader["proteiny"]);
+                    ObjektAktualniPrijem.pridanySacharidy = Convert.ToInt32(reader["sacharidy"]);
+                    ObjektAktualniPrijem.pridanyTuky = Convert.ToInt32(reader["tuky"]);
+                }
+                pripojeni.Close();
+            }
+            finally
+            {
+                pripojeni.Close();
+            }
         }
 
     }

@@ -28,7 +28,7 @@ namespace Semestralka
                 MessageBox.Show("Problém s vytvářením tabulky!");
 
             prikaz.NahraniDenniPrijmu();
-
+            prikaz.NahraniAktualnihoPrijmu();
             // Nastaveni parametru
             labelNastavenyProtein.Text = Convert.ToString(ObjektDenniPrijem.proteiny);
             labelNastavenySacharid.Text = Convert.ToString(ObjektDenniPrijem.sacharidy);
@@ -66,6 +66,20 @@ namespace Semestralka
         private void HlavniMenu_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+            prikaz.VymazaniAktualnihoPrijmu();
+            prikaz.NahraniAktualnihoPrijmu();
+            labelAktualniProtein.Text = "0";
+            labelAktualniSacharid.Text = "0";
+            labelAktualniTuk.Text = "0";
+        }
+
+        private void HlavniMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

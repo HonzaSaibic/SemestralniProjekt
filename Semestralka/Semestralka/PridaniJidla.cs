@@ -54,5 +54,10 @@ namespace Semestralka
             HlavniMenu hlavniMenu = new HlavniMenu();
             hlavniMenu.Show();
         }
+
+        private void PridaniJidla_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -28,42 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonVyberToto = new System.Windows.Forms.Button();
+            this.buttonPridej = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBoxSelectJidlo = new System.Windows.Forms.TextBox();
             this.buttonZpet = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // buttonVyberToto
+            // buttonPridej
             // 
-            this.buttonVyberToto.Location = new System.Drawing.Point(173, 153);
-            this.buttonVyberToto.Name = "buttonVyberToto";
-            this.buttonVyberToto.Size = new System.Drawing.Size(210, 23);
-            this.buttonVyberToto.TabIndex = 20;
-            this.buttonVyberToto.Text = "Najti toto jídlo";
-            this.buttonVyberToto.UseVisualStyleBackColor = true;
-            this.buttonVyberToto.Click += new System.EventHandler(this.buttonVyberToto_Click);
+            this.buttonPridej.Location = new System.Drawing.Point(208, 81);
+            this.buttonPridej.Name = "buttonPridej";
+            this.buttonPridej.Size = new System.Drawing.Size(297, 29);
+            this.buttonPridej.TabIndex = 20;
+            this.buttonPridej.Text = "Hotovo";
+            this.buttonPridej.UseVisualStyleBackColor = true;
+            this.buttonPridej.Click += new System.EventHandler(this.buttonPridej_Click);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 182);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 119);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(371, 384);
+            this.dataGridView1.Size = new System.Drawing.Size(493, 384);
             this.dataGridView1.TabIndex = 19;
             // 
             // textBoxSelectJidlo
             // 
-            this.textBoxSelectJidlo.Location = new System.Drawing.Point(13, 153);
+            this.textBoxSelectJidlo.Location = new System.Drawing.Point(12, 86);
             this.textBoxSelectJidlo.Name = "textBoxSelectJidlo";
-            this.textBoxSelectJidlo.Size = new System.Drawing.Size(155, 20);
+            this.textBoxSelectJidlo.Size = new System.Drawing.Size(190, 20);
             this.textBoxSelectJidlo.TabIndex = 18;
             this.textBoxSelectJidlo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSelectJidlo_KeyPress);
             // 
             // buttonZpet
             // 
-            this.buttonZpet.Location = new System.Drawing.Point(13, 13);
+            this.buttonZpet.Location = new System.Drawing.Point(12, 15);
             this.buttonZpet.Name = "buttonZpet";
             this.buttonZpet.Size = new System.Drawing.Size(75, 23);
             this.buttonZpet.TabIndex = 21;
@@ -71,17 +72,28 @@
             this.buttonZpet.UseVisualStyleBackColor = true;
             this.buttonZpet.Click += new System.EventHandler(this.buttonZpet_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 70);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 13);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Vyber jídlo co si snědl";
+            // 
             // VyberZJidel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(395, 578);
+            this.ClientSize = new System.Drawing.Size(517, 514);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonZpet);
-            this.Controls.Add(this.buttonVyberToto);
+            this.Controls.Add(this.buttonPridej);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBoxSelectJidlo);
             this.Name = "VyberZJidel";
             this.Text = "VyberZJidel";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VyberZJidel_FormClosed);
             this.Load += new System.EventHandler(this.VyberZJidel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -91,9 +103,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button buttonVyberToto;
+        private System.Windows.Forms.Button buttonPridej;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox textBoxSelectJidlo;
         private System.Windows.Forms.Button buttonZpet;
+        private System.Windows.Forms.Label label1;
     }
 }
