@@ -23,18 +23,26 @@ namespace Semestralka
 
         private void buttonVlozit_Click(object sender, EventArgs e)
         {
-            if (prikaz.Insert(textBoxJmeno.Text, textBoxProteiny.Text, textBoxSacharidy.Text, textBoxTuky.Text) == true)
+            if (prikaz.KontrolaJidla(textBoxJmeno.Text) == false)
             {
-                prikaz.Insert(textBoxJmeno.Text, textBoxProteiny.Text, textBoxSacharidy.Text, textBoxTuky.Text);
-                MessageBox.Show("Úpěšně uloženo!");
-                textBoxJmeno.Text = "";
-                textBoxProteiny.Text = "";
-                textBoxSacharidy.Text = "";
-                textBoxTuky.Text = "";
+                if (prikaz.Insert(textBoxJmeno.Text, textBoxProteiny.Text, textBoxSacharidy.Text, textBoxTuky.Text) == true)
+                {
+                    prikaz.Insert(textBoxJmeno.Text, textBoxProteiny.Text, textBoxSacharidy.Text, textBoxTuky.Text);
+                    MessageBox.Show("Úpěšně uloženo!");
+                    textBoxJmeno.Text = "";
+                    textBoxProteiny.Text = "";
+                    textBoxSacharidy.Text = "";
+                    textBoxTuky.Text = "";
+                }
+
+                else
+                {
+                    MessageBox.Show("Překontrolujte si zadané hodnoty.");
+                }
             }
             else
             {
-                MessageBox.Show("Překontrolujte si zadané hodnoty, nebo, zdali není jídlo s takovým jménem již přidáno.");
+                MessageBox.Show("Takové jídlo je již v databázi.");
             }
         }
 

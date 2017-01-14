@@ -52,13 +52,36 @@ namespace Semestralka
                 pripojeni.Close();
                 return false;
             }
-            
+
         }
 
-        public bool KontrolaJidla (string jmeno)
+        public bool KontrolaJidla(string jmeno)
         {
-
+            pripojeni.ConnectionString = databaze.ulozeniDatabaze();
+            pripojeni.Open();
+            try
+            {
+                SQLiteCommand cmd = new SQLiteCommand("SELECT * FROM jidlo WHERE jmeno='" + jmeno + "'", pripojeni);
+                SQLiteDataAdapter da = new SQLiteDataAdapter();
+                DataTable dt = new DataTable();
+                da.SelectCommand = cmd;
+                da.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    pripojeni.Close();
+                    return true;
+                }
+                else
+                {
+                    pripojeni.Close();
+                    return false;
+                }
+            }
+            finally
+            {
+                pripojeni.Close();
+            }          
         }
 
-        }
+    }
 }
