@@ -20,72 +20,44 @@ namespace Semestralka
         public HlavniMenu()
         {
             InitializeComponent();
+
+            // Zavolana metoda pro vytvoreni tabulky pri startu
             if (prikaz.CreateTabulka() == true)
                 prikaz.CreateTabulka();
             else
                 MessageBox.Show("Problém s vytvářením tabulky!");
-        }     
 
-        private void buttonVypis_Click(object sender, EventArgs e)
-        {
-            pripojeni.ConnectionString = databaze.ulozeniDatabaze();
-            pripojeni.Open();
-            try
-            {
-                SQLiteCommand select = new SQLiteCommand("SELECT * FROM jidlo", pripojeni);
-                SQLiteDataAdapter da = new SQLiteDataAdapter();
-                DataTable dt = new DataTable();
-                da.SelectCommand = select;
-                da.Fill(dt);
-                if (dt.Rows.Count > 0)
-                {
-                    dataGridView1.DataSource = dt;
-                }
-                else
-                {
-                    MessageBox.Show("Žádná jídla nejsou v databázi");
-                }
-                pripojeni.Close();
-            }
-            catch (Exception)
-            {
-                pripojeni.Close();
-                MessageBox.Show("Problem s vypisem databaze!");
-            }
-        }
-
-        private void buttonVyberToto_Click(object sender, EventArgs e)
-        {
-            pripojeni.ConnectionString = databaze.ulozeniDatabaze();
-            pripojeni.Open();
-            try
-            {
-                SQLiteCommand cmd = new SQLiteCommand("SELECT * FROM jidlo WHERE jmeno='" + textBoxSelectJidlo.Text.ToLower() + "'", pripojeni);
-                SQLiteDataAdapter da = new SQLiteDataAdapter();
-                DataTable dt = new DataTable();
-                da.SelectCommand = cmd;
-                da.Fill(dt);
-                if (dt.Rows.Count > 0)
-                {
-                    dataGridView1.DataSource = dt;
-                }
-                else
-                {
-                    MessageBox.Show("Takový produkt není v databázi");
-                }
-                pripojeni.Close();
-            }
-            catch
-            {
-                pripojeni.Close();
-                MessageBox.Show("Problém s databází");
-            }
-        }
+            // Nastaveni parametru
+            labelNastavenyProtein.Text = Convert.ToString(DenniPrijem.proteiny);
+            labelNastavenySacharid.Text = Convert.ToString(DenniPrijem.sacharidy);
+            labelNastavenyTuk.Text = Convert.ToString(DenniPrijem.tuky);
+        }          
+          
         private void buttonVlozitJidlo_Click(object sender, EventArgs e)
         {
             PridaniJidla pridaniJidla = new PridaniJidla();
             this.Hide();
             pridaniJidla.Show();
+
+        }
+
+        private void buttonVybratJidlo_Click(object sender, EventArgs e)
+        {
+            Hide();
+            VyberZJidel vyberZJidel = new VyberZJidel();
+            vyberZJidel.Show();
+        }
+
+        private void buttonDenniPrijem_Click(object sender, EventArgs e)
+        {
+            Hide();
+            NastaveniPrijmu nastaveniPrijmu = new NastaveniPrijmu();
+            nastaveniPrijmu.Show();
+
+        }
+
+        private void HlavniMenu_Load(object sender, EventArgs e)
+        {
 
         }
     }

@@ -14,7 +14,7 @@ namespace Semestralka
         SQLiteConnection pripojeni = new SQLiteConnection();
 
 
-
+        // Vytvoreni tabulky v databazi, pokud jeste neexistuje
         public bool CreateTabulka()
         {
             pripojeni.ConnectionString = databaze.ulozeniDatabaze();
@@ -34,6 +34,7 @@ namespace Semestralka
             }
         }
 
+        // Prikaz pro vlozeni do tabulky.
         public bool Insert(string jmeno, string proteiny, string sacharidy, string tuky)
         {
             pripojeni.ConnectionString = databaze.ulozeniDatabaze();

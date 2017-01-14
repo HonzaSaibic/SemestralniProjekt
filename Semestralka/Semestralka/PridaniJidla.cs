@@ -23,8 +23,10 @@ namespace Semestralka
 
         private void buttonVlozit_Click(object sender, EventArgs e)
         {
-            if (prikaz.KontrolaJidla(textBoxJmeno.Text) == false)
+            // Pokud je metoda KontrolaJidla false, znamena to, ze takove jmeno neni v databazi
+            if (prikaz.KontrolaJidla(textBoxJmeno.Text.ToLower()) == false)
             {
+                // Pokud je Insert true, znamena to, ze vse probehlo v poradku a muzu tedy pridavat jidlo
                 if (prikaz.Insert(textBoxJmeno.Text, textBoxProteiny.Text, textBoxSacharidy.Text, textBoxTuky.Text) == true)
                 {
                     prikaz.Insert(textBoxJmeno.Text, textBoxProteiny.Text, textBoxSacharidy.Text, textBoxTuky.Text);
