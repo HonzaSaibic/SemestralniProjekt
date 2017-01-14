@@ -28,7 +28,7 @@ namespace Semestralka
             pripojeni.Open();
             try
             {
-                SQLiteCommand select = new SQLiteCommand("SELECT jmeno AS Jidlo ,proteiny AS 'Protein na 100g',sacharidy AS 'Sacharidy na 100g',tuky AS 'Tuky na 100g' FROM jidlo", pripojeni);
+                SQLiteCommand select = new SQLiteCommand("SELECT jmeno AS Jidlo ,kalorie AS 'Kcal', proteiny AS 'Protein na 100g',sacharidy AS 'Sacharidy na 100g',tuky AS 'Tuky na 100g' FROM jidlo", pripojeni);
                 SQLiteDataAdapter da = new SQLiteDataAdapter();
                 DataTable dt = new DataTable();
                 da.SelectCommand = select;
@@ -73,12 +73,13 @@ namespace Semestralka
                 {
                     try
                     {
+                        ObjektAktualniPrijem.kalorie = ObjektAktualniPrijem.pridanyKalorie + ObjektAktualniPrijem.kalorie;
                         ObjektAktualniPrijem.proteiny = ObjektAktualniPrijem.pridanyProteiny + ObjektAktualniPrijem.proteiny;
                         ObjektAktualniPrijem.sacharidy = ObjektAktualniPrijem.pridanySacharidy + ObjektAktualniPrijem.sacharidy;
                         ObjektAktualniPrijem.tuky = ObjektAktualniPrijem.pridanyTuky + ObjektAktualniPrijem.tuky;
 
                         prikaz.VymazaniAktualnihoPrijmu();
-                        prikaz.InsertAktualniPrijem(Convert.ToInt32(ObjektAktualniPrijem.proteiny),
+                        prikaz.InsertAktualniPrijem(Convert.ToInt32(ObjektAktualniPrijem.kalorie),Convert.ToInt32(ObjektAktualniPrijem.proteiny),
                             Convert.ToInt32(ObjektAktualniPrijem.sacharidy), Convert.ToInt32(ObjektAktualniPrijem.tuky));
 
                         MessageBox.Show("Úspěšně přidáno do dnešního jídelníčku!");

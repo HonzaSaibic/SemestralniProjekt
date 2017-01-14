@@ -28,6 +28,7 @@ namespace Semestralka
         {
             try
             {
+                ObjektDenniPrijem.kalorie = Convert.ToInt32(textBoxKalorie.Text);
                 ObjektDenniPrijem.proteiny = Convert.ToInt32(textBoxProteiny.Text);
                 ObjektDenniPrijem.sacharidy = Convert.ToInt32(textBoxSacharidy.Text);
                 ObjektDenniPrijem.tuky = Convert.ToInt32(textBoxTuky.Text);
@@ -37,7 +38,7 @@ namespace Semestralka
                 try
                 {
                     prikaz.VymazaniPoslednihoPrijmu();
-                    prikaz.InsertDenniPrijem(Convert.ToInt32(textBoxProteiny.Text), Convert.ToInt32(textBoxSacharidy.Text), Convert.ToInt32(textBoxTuky.Text));
+                    prikaz.InsertDenniPrijem(Convert.ToInt32(textBoxKalorie.Text),Convert.ToInt32(textBoxProteiny.Text), Convert.ToInt32(textBoxSacharidy.Text), Convert.ToInt32(textBoxTuky.Text));
                 }
                 catch
                 {

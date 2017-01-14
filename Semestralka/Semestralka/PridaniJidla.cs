@@ -27,16 +27,20 @@ namespace Semestralka
             if (prikaz.KontrolaJidla(textBoxJmeno.Text.ToLower()) == false)
             {
                 // Pokud je InsertJidlo true, znamena to, ze vse probehlo v poradku a muzu tedy pridavat jidlo
-                if (prikaz.InsertJidlo(textBoxJmeno.Text, textBoxProteiny.Text, textBoxSacharidy.Text, textBoxTuky.Text) == true)
+                if (prikaz.InsertJidlo(textBoxJmeno.Text,Convert.ToInt32(textBoxKalorie.Text),Convert.ToInt32(textBoxProteiny.Text),
+                    Convert.ToInt32(textBoxSacharidy.Text), Convert.ToInt32(textBoxTuky.Text)) == true)
                 {
-                    prikaz.InsertJidlo(textBoxJmeno.Text, textBoxProteiny.Text, textBoxSacharidy.Text, textBoxTuky.Text);
+                    prikaz.InsertJidlo(textBoxJmeno.Text, Convert.ToInt32(textBoxKalorie.Text), Convert.ToInt32(textBoxProteiny.Text),
+                        Convert.ToInt32(textBoxSacharidy.Text), Convert.ToInt32(textBoxTuky.Text));
+
                     MessageBox.Show("Úpěšně uloženo!");
+
                     textBoxJmeno.Text = "";
+                    textBoxKalorie.Text = "";
                     textBoxProteiny.Text = "";
                     textBoxSacharidy.Text = "";
                     textBoxTuky.Text = "";
                 }
-
                 else
                 {
                     MessageBox.Show("Překontrolujte si zadané hodnoty.");

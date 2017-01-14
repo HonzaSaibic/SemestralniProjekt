@@ -21,15 +21,15 @@ namespace Semestralka
             pripojeni.Open();
             try
             {
-                string vytvoreniJidla = "CREATE TABLE IF NOT EXISTS jidlo (jmeno TEXT UNIQUE, proteiny INT, sacharidy INT, tuky INT)";
+                string vytvoreniJidla = "CREATE TABLE IF NOT EXISTS jidlo (jmeno TEXT UNIQUE, kalorie INT, proteiny INT, sacharidy INT, tuky INT)";
                 SQLiteCommand prikaz = new SQLiteCommand(vytvoreniJidla, pripojeni);
                 prikaz.ExecuteNonQuery();
 
-                string vytvoreniDennihoPrijmu = "CREATE TABLE IF NOT EXISTS denniPrijem (id PRIMARY KEY, proteiny INT, sacharidy INT, tuky INT)";
+                string vytvoreniDennihoPrijmu = "CREATE TABLE IF NOT EXISTS denniPrijem (id PRIMARY KEY, kalorie INT, proteiny INT, sacharidy INT, tuky INT)";
                 SQLiteCommand prikaz2 = new SQLiteCommand(vytvoreniDennihoPrijmu, pripojeni);
                 prikaz2.ExecuteNonQuery();
 
-                string vytvoreniAktualnihoPrijmu = "CREATE TABLE IF NOT EXISTS aktualniPrijem (id PRIMARY KEY, proteiny INT, sacharidy INT, tuky INT)";
+                string vytvoreniAktualnihoPrijmu = "CREATE TABLE IF NOT EXISTS aktualniPrijem (id PRIMARY KEY, kalorie INT, proteiny INT, sacharidy INT, tuky INT)";
                 SQLiteCommand prikaz3 = new SQLiteCommand(vytvoreniAktualnihoPrijmu, pripojeni);
                 prikaz3.ExecuteNonQuery();
 
@@ -45,14 +45,14 @@ namespace Semestralka
         }
 
         // Prikaz pro vlozeni do tabulky.
-        public bool InsertJidlo(string jmeno, string proteiny, string sacharidy, string tuky)
+        public bool InsertJidlo(string jmeno,int kalorie, int proteiny, int sacharidy, int tuky)
         {
             pripojeni.ConnectionString = databaze.ulozeniDatabaze();
             pripojeni.Open();
             try
             {
-                string insert = "INSERT INTO jidlo (jmeno, proteiny, sacharidy, tuky) VALUES ('" +
-                    jmeno.ToLower() + "','" + proteiny + "','" + sacharidy + "','" + tuky + "')";
+                string insert = "INSERT INTO jidlo (jmeno,kalorie, proteiny, sacharidy, tuky) VALUES ('" +
+                    jmeno.ToLower() + "','" + kalorie +"','" + proteiny + "','" + sacharidy + "','" + tuky + "')";
                 SQLiteCommand prikaz = new SQLiteCommand(insert, pripojeni);
                 prikaz.ExecuteNonQuery();
                 pripojeni.Close();
@@ -94,13 +94,13 @@ namespace Semestralka
             }          
         }
 
-        public void InsertDenniPrijem (int proteiny, int sacharidy, int tuky)
+        public void InsertDenniPrijem (int kalorie, int proteiny, int sacharidy, int tuky)
         {
             try
             {
                 pripojeni.ConnectionString = databaze.ulozeniDatabaze();
                 pripojeni.Open();
-                string insert = "INSERT INTO denniPrijem (id, proteiny, sacharidy, tuky) VALUES (1," + proteiny + "," + sacharidy + "," + tuky + ")";
+                string insert = "INSERT INTO denniPrijem (id, kalorie, proteiny, sacharidy, tuky) VALUES (1," + kalorie + "," + proteiny + "," + sacharidy + "," + tuky + ")";
                 SQLiteCommand prikaz = new SQLiteCommand(insert, pripojeni);
                 prikaz.ExecuteNonQuery();
                 pripojeni.Close();
@@ -111,13 +111,13 @@ namespace Semestralka
             }
         }
 
-        public void InsertAktualniPrijem(int proteiny, int sacharidy, int tuky)
+        public void InsertAktualniPrijem(int kalorie, int proteiny, int sacharidy, int tuky)
         {
             try
             {
                 pripojeni.ConnectionString = databaze.ulozeniDatabaze();
                 pripojeni.Open();
-                string insert = "INSERT INTO aktualniPrijem (id, proteiny, sacharidy, tuky) VALUES (1," + proteiny + "," + sacharidy + "," + tuky + ")";
+                string insert = "INSERT INTO aktualniPrijem (id, kalorie, proteiny, sacharidy, tuky) VALUES (1," + kalorie + "," + proteiny + "," + sacharidy + "," + tuky + ")";
                 SQLiteCommand prikaz = new SQLiteCommand(insert, pripojeni);
                 prikaz.ExecuteNonQuery();
                 pripojeni.Close();
@@ -173,6 +173,7 @@ namespace Semestralka
                 SQLiteDataReader reader = vyber.ExecuteReader();
                 while (reader.Read())
                 {
+                    ObjektDenniPrijem.kalorie = Convert.ToInt32(reader["kalorie"]);
                     ObjektDenniPrijem.proteiny = Convert.ToInt32(reader["proteiny"]);
                     ObjektDenniPrijem.sacharidy = Convert.ToInt32(reader["sacharidy"]);
                     ObjektDenniPrijem.tuky = Convert.ToInt32(reader["tuky"]);
@@ -197,6 +198,7 @@ namespace Semestralka
                 SQLiteDataReader reader = vyber.ExecuteReader();
                 while (reader.Read())
                 {
+                    ObjektAktualniPrijem.kalorie = Convert.ToInt32(reader["kalorie"]);
                     ObjektAktualniPrijem.proteiny = Convert.ToInt32(reader["proteiny"]);
                     ObjektAktualniPrijem.sacharidy = Convert.ToInt32(reader["sacharidy"]);
                     ObjektAktualniPrijem.tuky = Convert.ToInt32(reader["tuky"]);
@@ -220,6 +222,7 @@ namespace Semestralka
                 SQLiteDataReader reader = vyber.ExecuteReader();
                 while (reader.Read())
                 {
+                    ObjektAktualniPrijem.kalorie = Convert.ToInt32(reader["kalorie"]);
                     ObjektAktualniPrijem.pridanyProteiny = Convert.ToInt32(reader["proteiny"]);
                     ObjektAktualniPrijem.pridanySacharidy = Convert.ToInt32(reader["sacharidy"]);
                     ObjektAktualniPrijem.pridanyTuky = Convert.ToInt32(reader["tuky"]);

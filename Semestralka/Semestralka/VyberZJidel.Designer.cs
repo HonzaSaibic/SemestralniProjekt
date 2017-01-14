@@ -38,7 +38,7 @@
             // 
             // buttonPridej
             // 
-            this.buttonPridej.Location = new System.Drawing.Point(208, 81);
+            this.buttonPridej.Location = new System.Drawing.Point(258, 81);
             this.buttonPridej.Name = "buttonPridej";
             this.buttonPridej.Size = new System.Drawing.Size(297, 29);
             this.buttonPridej.TabIndex = 20;
@@ -51,14 +51,14 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 119);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(493, 384);
+            this.dataGridView1.Size = new System.Drawing.Size(543, 384);
             this.dataGridView1.TabIndex = 19;
             // 
             // textBoxSelectJidlo
             // 
             this.textBoxSelectJidlo.Location = new System.Drawing.Point(12, 86);
             this.textBoxSelectJidlo.Name = "textBoxSelectJidlo";
-            this.textBoxSelectJidlo.Size = new System.Drawing.Size(190, 20);
+            this.textBoxSelectJidlo.Size = new System.Drawing.Size(240, 20);
             this.textBoxSelectJidlo.TabIndex = 18;
             this.textBoxSelectJidlo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSelectJidlo_KeyPress);
             // 
@@ -85,7 +85,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(517, 514);
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(567, 514);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonZpet);
             this.Controls.Add(this.buttonPridej);

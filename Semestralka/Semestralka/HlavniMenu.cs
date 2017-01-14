@@ -27,13 +27,17 @@ namespace Semestralka
             else
                 MessageBox.Show("Problém s vytvářením tabulky!");
 
+            
             prikaz.NahraniDenniPrijmu();
             prikaz.NahraniAktualnihoPrijmu();
-            // Nastaveni parametru
+            
+            // zapsani parametru do labelů
+            labelNastavenyKalorie.Text = Convert.ToString(ObjektDenniPrijem.kalorie);
             labelNastavenyProtein.Text = Convert.ToString(ObjektDenniPrijem.proteiny);
             labelNastavenySacharid.Text = Convert.ToString(ObjektDenniPrijem.sacharidy);
-            labelNastavenyTuk.Text = Convert.ToString(ObjektDenniPrijem.tuky); 
+            labelNastavenyTuk.Text = Convert.ToString(ObjektDenniPrijem.tuky);
 
+            labelAktualniKalorie.Text = Convert.ToString(ObjektAktualniPrijem.kalorie);
             labelAktualniProtein.Text = Convert.ToString(ObjektAktualniPrijem.proteiny);
             labelAktualniSacharid.Text = Convert.ToString(ObjektAktualniPrijem.sacharidy);
             labelAktualniTuk.Text = Convert.ToString(ObjektAktualniPrijem.tuky);
@@ -71,10 +75,14 @@ namespace Semestralka
         private void buttonReset_Click(object sender, EventArgs e)
         {
             prikaz.VymazaniAktualnihoPrijmu();
-            prikaz.NahraniAktualnihoPrijmu();
             labelAktualniProtein.Text = "0";
             labelAktualniSacharid.Text = "0";
             labelAktualniTuk.Text = "0";
+            labelAktualniKalorie.Text = "0";
+            ObjektAktualniPrijem.kalorie = 0;
+            ObjektAktualniPrijem.proteiny = 0;
+            ObjektAktualniPrijem.sacharidy = 0;
+            ObjektAktualniPrijem.tuky = 0;
         }
 
         private void HlavniMenu_FormClosed(object sender, FormClosedEventArgs e)

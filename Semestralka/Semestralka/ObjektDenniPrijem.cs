@@ -8,6 +8,7 @@ namespace Semestralka
 {
     public static class ObjektDenniPrijem
     {
+        public static int kalorie { get; set; }
         public static int proteiny { get; set; }
         public static int sacharidy { get; set; }
         public static int tuky { get; set; }
