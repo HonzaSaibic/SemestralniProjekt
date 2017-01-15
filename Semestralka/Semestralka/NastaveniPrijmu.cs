@@ -66,5 +66,21 @@ namespace Semestralka
         {
             Application.Exit();
         }
+
+        private void buttonZpet_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonZpet.PerformClick();
+            }
+        }
+
+        private void buttonNastavit_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonNastavit.PerformClick();
+            }
+        }
     }
 }

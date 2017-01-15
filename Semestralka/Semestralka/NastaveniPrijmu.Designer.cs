@@ -51,6 +51,7 @@
             this.buttonZpet.Text = "Zpět";
             this.buttonZpet.UseVisualStyleBackColor = true;
             this.buttonZpet.Click += new System.EventHandler(this.buttonZpet_Click);
+            this.buttonZpet.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonZpet_KeyDown);
             // 
             // labelTuky
             // 
@@ -109,6 +110,7 @@
             this.buttonNastavit.Text = "Nastavit";
             this.buttonNastavit.UseVisualStyleBackColor = true;
             this.buttonNastavit.Click += new System.EventHandler(this.buttonNastavit_Click);
+            this.buttonNastavit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonNastavit_KeyDown);
             // 
             // labelOkraj
             // 

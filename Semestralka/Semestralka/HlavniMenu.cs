@@ -89,5 +89,37 @@ namespace Semestralka
         {
             Application.Exit();
         }
+
+        private void buttonReset_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonReset.PerformClick();
+            }
+        }
+
+        private void buttonDenniPrijem_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonDenniPrijem.PerformClick();
+            }
+        }
+
+        private void buttonVybratJidlo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonVybratJidlo.PerformClick();
+            }
+        }
+
+        private void buttonVlozitJidlo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonVlozitJidlo.PerformClick();
+            }
+        }
     }
 }

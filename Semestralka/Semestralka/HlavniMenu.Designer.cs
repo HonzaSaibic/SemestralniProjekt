@@ -62,6 +62,7 @@
             this.buttonVybratJidlo.Text = "Vybrat uložené jídlo";
             this.buttonVybratJidlo.UseVisualStyleBackColor = true;
             this.buttonVybratJidlo.Click += new System.EventHandler(this.buttonVybratJidlo_Click);
+            this.buttonVybratJidlo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonVybratJidlo_KeyDown);
             // 
             // buttonVlozitJidlo
             // 
@@ -72,6 +73,7 @@
             this.buttonVlozitJidlo.Text = "Uložit nové jídlo";
             this.buttonVlozitJidlo.UseVisualStyleBackColor = true;
             this.buttonVlozitJidlo.Click += new System.EventHandler(this.buttonVlozitJidlo_Click);
+            this.buttonVlozitJidlo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonVlozitJidlo_KeyDown);
             // 
             // buttonDenniPrijem
             // 
@@ -82,6 +84,7 @@
             this.buttonDenniPrijem.Text = "Nastavit denní příjem";
             this.buttonDenniPrijem.UseVisualStyleBackColor = true;
             this.buttonDenniPrijem.Click += new System.EventHandler(this.buttonDenniPrijem_Click);
+            this.buttonDenniPrijem.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonDenniPrijem_KeyDown);
             // 
             // labelTuky
             // 
@@ -218,6 +221,7 @@
             this.buttonReset.Text = "Smazat";
             this.buttonReset.UseVisualStyleBackColor = true;
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            this.buttonReset.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonReset_KeyDown);
             // 
             // label1
             // 

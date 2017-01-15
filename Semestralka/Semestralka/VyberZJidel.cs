@@ -16,12 +16,14 @@ namespace Semestralka
         SQLiteConnection pripojeni = new SQLiteConnection();
         Databaze databaze = new Databaze();
         Prikazy prikaz = new Prikazy();
+        VypocetProcent procenta = new VypocetProcent();
 
         public VyberZJidel()
         {
             InitializeComponent();
             
         }
+
 
         private void VyberZJidel_Load(object sender, EventArgs e)
         { 
@@ -63,22 +65,38 @@ namespace Semestralka
             {
                 prikaz.NahraniVybranehoJidla(textBoxSelectJidlo.Text);
                
-                if (prikaz.KontrolaJidla(textBoxSelectJidlo.Text) == true)
+                if (prikaz.KontrolaJidla(textBoxSelectJidlo.Text.ToLower()) == true)
                 {
                     try
                     {
-                        ObjektAktualniPrijem.kalorie = ObjektAktualniPrijem.pridanyKalorie + ObjektAktualniPrijem.kalorie;
-                        ObjektAktualniPrijem.proteiny = ObjektAktualniPrijem.pridanyProteiny + ObjektAktualniPrijem.proteiny;
-                        ObjektAktualniPrijem.sacharidy = ObjektAktualniPrijem.pridanySacharidy + ObjektAktualniPrijem.sacharidy;
-                        ObjektAktualniPrijem.tuky = ObjektAktualniPrijem.pridanyTuky + ObjektAktualniPrijem.tuky;
+                        double procentaKalorie = procenta.Procento(ObjektAktualniPrijem.pridanyKalorie, Convert.ToInt32(textBoxKolikG.Text));
+                        double procentaProteinu = procenta.Procento(ObjektAktualniPrijem.pridanyProteiny, Convert.ToInt32(textBoxKolikG.Text));
+                        double procentaSacharidu = procenta.Procento(ObjektAktualniPrijem.pridanySacharidy, Convert.ToInt32(textBoxKolikG.Text));
+                        double procentaTuku = procenta.Procento(ObjektAktualniPrijem.pridanyTuky, Convert.ToInt32(textBoxKolikG.Text));
+                        ObjektAktualniPrijem.kalorie = Convert.ToInt32(procentaKalorie) + ObjektAktualniPrijem.kalorie;
+                        ObjektAktualniPrijem.proteiny = Convert.ToInt32(procentaProteinu) + ObjektAktualniPrijem.proteiny;
+                        ObjektAktualniPrijem.sacharidy = Convert.ToInt32(procentaSacharidu) + ObjektAktualniPrijem.sacharidy;
+                        ObjektAktualniPrijem.tuky = Convert.ToInt32(procentaTuku) + ObjektAktualniPrijem.tuky;
 
                         prikaz.VymazaniAktualnihoPrijmu();
-                        prikaz.InsertAktualniPrijem(Convert.ToInt32(ObjektAktualniPrijem.kalorie),Convert.ToInt32(ObjektAktualniPrijem.proteiny),
+                        prikaz.InsertAktualniPrijem(Convert.ToInt32(ObjektAktualniPrijem.kalorie), Convert.ToInt32(ObjektAktualniPrijem.proteiny),
                             Convert.ToInt32(ObjektAktualniPrijem.sacharidy), Convert.ToInt32(ObjektAktualniPrijem.tuky));
 
                         MessageBox.Show("Úspěšně přidáno do dnešního jídelníčku!");
 
                         textBoxSelectJidlo.Text = "";
+                        textBoxKolikG.Text = "";
+                    }
+                    catch (FormatException)
+                    {
+                        if (textBoxKolikG.Text == "")
+                        {
+                            MessageBox.Show("Vyberte, kolik gramů chcete uložit.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Zadejte prosím číslo!");
+                        }
                     }
                     catch
                     {
@@ -95,9 +113,66 @@ namespace Semestralka
                 MessageBox.Show("Zadávat se dají pouze čísla!");
             }
         }
+        private void buttonVymazat_Click(object sender, EventArgs e)
+        {
+
+        }
         private void VyberZJidel_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void buttonPridej_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonPridej.PerformClick();
+            }
+        }
+
+        private void buttonZpet_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonZpet.PerformClick();
+            }
+        }
+
+        private void buttonUpravit_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonUpravit.PerformClick();
+            }
+        }
+        private void buttonVymazat_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonVymazat.PerformClick();
+            }
+        }
+
+        private void buttonUpravit_Click_1(object sender, EventArgs e)
+        {
+            if (textBoxSelectJidlo.Text != "")
+            {
+                if (prikaz.KontrolaJidla(textBoxSelectJidlo.Text.ToLower()) == true)
+                {
+                    Jidlo.jmeno = textBoxSelectJidlo.Text;
+                    Hide();
+                    UpravaJidla uprava = new UpravaJidla();
+                    uprava.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Takové jídlo není v databázi!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vyberte si jídlo.");
+            }
         }
     }
 }

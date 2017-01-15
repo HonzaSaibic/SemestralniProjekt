@@ -235,5 +235,23 @@ namespace Semestralka
             }
         }
 
+        public void UpdateJidla (string jmeno, int kalorie, int proteiny, int sacharidy, int tuky)
+        {
+            pripojeni.ConnectionString = databaze.ulozeniDatabaze();
+            pripojeni.Open();
+            try
+            {
+                string update = "UPDATE jidlo SET kalorie=" + kalorie + ",proteiny=" + 
+                    proteiny + ",sacharidy=" + sacharidy + ",tuky=" + tuky + " WHERE jmeno='" + jmeno + "'";
+                SQLiteCommand zmena = new SQLiteCommand(update,pripojeni);
+                zmena.ExecuteNonQuery();
+                pripojeni.Close();
+            }
+            finally
+            {
+                pripojeni.Close();
+            }
+        }
+
     }
 }

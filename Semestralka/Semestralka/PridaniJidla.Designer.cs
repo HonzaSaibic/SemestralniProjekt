@@ -81,6 +81,7 @@
             this.buttonVlozit.Text = "Uložit produkt";
             this.buttonVlozit.UseVisualStyleBackColor = true;
             this.buttonVlozit.Click += new System.EventHandler(this.buttonVlozit_Click);
+            this.buttonVlozit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonVlozit_KeyDown);
             // 
             // labelJmeno
             // 
@@ -127,6 +128,7 @@
             this.buttonZpet.Text = "Zpět";
             this.buttonZpet.UseVisualStyleBackColor = true;
             this.buttonZpet.Click += new System.EventHandler(this.buttonZpet_Click);
+            this.buttonZpet.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonZpet_KeyDown);
             // 
             // labelKalorie
             // 
@@ -185,6 +187,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PridaniJidla";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PridaniJidla_FormClosed);
+            this.Load += new System.EventHandler(this.PridaniJidla_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

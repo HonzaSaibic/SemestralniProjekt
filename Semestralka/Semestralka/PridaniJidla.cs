@@ -70,5 +70,26 @@ namespace Semestralka
         {
             Application.Exit();
         }
+
+        private void PridaniJidla_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonZpet_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonZpet.PerformClick();
+            }
+        }
+
+        private void buttonVlozit_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonVlozit.PerformClick();
+            }
+        }
     }
 }
