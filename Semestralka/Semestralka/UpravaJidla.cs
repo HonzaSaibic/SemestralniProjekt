@@ -63,5 +63,10 @@ namespace Semestralka
                 MessageBox.Show("Problém s uložením jídla, zkontrolujte prosím zadané údaje!");
             }
         }
+
+        private void UpravaJidla_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

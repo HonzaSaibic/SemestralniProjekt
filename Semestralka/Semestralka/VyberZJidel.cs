@@ -21,38 +21,8 @@ namespace Semestralka
         public VyberZJidel()
         {
             InitializeComponent();
-            
         }
 
-
-        private void VyberZJidel_Load(object sender, EventArgs e)
-        { 
-            pripojeni.ConnectionString = databaze.ulozeniDatabaze();
-            pripojeni.Open();
-            try
-            {
-                SQLiteCommand select = new SQLiteCommand("SELECT jmeno AS Jidlo ,kalorie AS 'Kcal', proteiny AS 'Protein na 100g',sacharidy AS 'Sacharidy na 100g',tuky AS 'Tuky na 100g' FROM jidlo", pripojeni);
-                SQLiteDataAdapter da = new SQLiteDataAdapter();
-                DataTable dt = new DataTable();
-                da.SelectCommand = select;
-                da.Fill(dt);
-                if (dt.Rows.Count > 0)
-                {
-                    dataGridView1.DataSource = dt;
-                }
-                else
-                {
-                    MessageBox.Show("Žádná jídla nejsou v databázi");
-                }
-                pripojeni.Close();
-
-            }
-            catch (Exception)
-            {
-                pripojeni.Close();
-                MessageBox.Show("Problem s vypisem databaze!");
-            }
-        }
         private void buttonZpet_Click(object sender, EventArgs e)
         {
             Hide();
@@ -64,11 +34,14 @@ namespace Semestralka
             try
             {
                 prikaz.NahraniVybranehoJidla(textBoxSelectJidlo.Text);
-               
+
+                // podivam se, jestli je takove jidlo v databazi. 
+                // Jelikoz ukladam do databaze pouze male pismena, musim tedy hledat pres male pismena
                 if (prikaz.KontrolaJidla(textBoxSelectJidlo.Text.ToLower()) == true)
                 {
                     try
                     {
+                        // dost nepekne napsane pocitani dennin prijmu(pricitani jidla k jiz danym hodnotam)
                         double procentaKalorie = procenta.Procento(ObjektAktualniPrijem.pridanyKalorie, Convert.ToInt32(textBoxKolikG.Text));
                         double procentaProteinu = procenta.Procento(ObjektAktualniPrijem.pridanyProteiny, Convert.ToInt32(textBoxKolikG.Text));
                         double procentaSacharidu = procenta.Procento(ObjektAktualniPrijem.pridanySacharidy, Convert.ToInt32(textBoxKolikG.Text));
@@ -115,7 +88,35 @@ namespace Semestralka
         }
         private void buttonVymazat_Click(object sender, EventArgs e)
         {
-
+            if (textBoxSelectJidlo.Text != "")
+            {
+                if (prikaz.KontrolaJidla(textBoxSelectJidlo.Text.ToLower()) == true)
+                {
+                    // pokud se v messageboxu vybere Yes, smaze se jidlo a datagrid se znovu naplni novyma hodnotama
+                    DialogResult vyber = MessageBox.Show("Opravdu chcete jídlo smazat?", "Ano", MessageBoxButtons.YesNo);
+                    if (vyber == DialogResult.Yes)
+                    {
+                        prikaz.SmazaniJidla(textBoxSelectJidlo.Text);
+                        textBoxSelectJidlo.Text = "";
+                        dataGridView1.DataSource = prikaz.NacteniDatabaze();
+                        if (prikaz.NacteniDatabaze() == null)
+                        {
+                            MessageBox.Show("Databáze je prázdná! Přidejte si jídlo.");
+                            Hide();
+                            PridaniJidla pridani = new PridaniJidla();
+                            pridani.Show();
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Takové jídlo není v databázi!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vyberte si jídlo.");
+            }
         }
         private void VyberZJidel_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -172,6 +173,19 @@ namespace Semestralka
             else
             {
                 MessageBox.Show("Vyberte si jídlo.");
+            }
+        }
+
+        private void VyberZJidel_Load(object sender, EventArgs e)
+        {
+            // nacteni dat do datagridu pres metodu nacteniDatabaze
+            try
+            {
+                dataGridView1.DataSource = prikaz.NacteniDatabaze();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Nastal problém s databází");
             }
         }
     }

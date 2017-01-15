@@ -54,9 +54,19 @@ namespace Semestralka
 
         private void buttonVybratJidlo_Click(object sender, EventArgs e)
         {
-            VyberZJidel vyberZJidel = new VyberZJidel();
-            vyberZJidel.Show();
-            Hide();
+            if (prikaz.NacteniDatabaze() != null)
+            {
+                VyberZJidel vyberZJidel = new VyberZJidel();
+                vyberZJidel.Show();
+                Hide();
+            }
+            else
+            {
+                MessageBox.Show("Databáze je prázdná. Přidejte si nejprve jídlo");
+                Hide();
+                PridaniJidla pridani = new PridaniJidla();
+                pridani.Show();
+            }
         }
 
         private void buttonDenniPrijem_Click(object sender, EventArgs e)

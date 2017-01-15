@@ -39,6 +39,7 @@
             this.labelNapis = new System.Windows.Forms.Label();
             this.buttonZpet = new System.Windows.Forms.Button();
             this.buttonUlozit = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelKalorie
@@ -136,11 +137,22 @@
             this.buttonUlozit.Click += new System.EventHandler(this.buttonUlozit_Click);
             this.buttonUlozit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.buttonUlozit_KeyDown);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(280, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 28;
+            // 
             // UpravaJidla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(290, 374);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonUlozit);
             this.Controls.Add(this.buttonZpet);
             this.Controls.Add(this.labelNapis);
@@ -153,7 +165,9 @@
             this.Controls.Add(this.textBoxSacharidy);
             this.Controls.Add(this.textBoxProteiny);
             this.Name = "UpravaJidla";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpravaJidla";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UpravaJidla_FormClosed);
             this.Load += new System.EventHandler(this.UpravaJidla_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -173,5 +187,6 @@
         private System.Windows.Forms.Label labelNapis;
         private System.Windows.Forms.Button buttonZpet;
         private System.Windows.Forms.Button buttonUlozit;
+        private System.Windows.Forms.Label label1;
     }
 }

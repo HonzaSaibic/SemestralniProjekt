@@ -19,11 +19,6 @@ namespace Semestralka
             InitializeComponent();
         }
 
-        private void NastaveniPrijmu_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonNastavit_Click(object sender, EventArgs e)
         {
             try
@@ -42,7 +37,7 @@ namespace Semestralka
                 }
                 catch
                 {
-                    MessageBox.Show("Problem s ulozenim do databaze! Zkontrolujte zadané údaje");
+                    MessageBox.Show("Problem s ulozenim do databaze! Kontaktujte příslušnou osobu.");
                 }
 
                 Hide();
@@ -81,6 +76,11 @@ namespace Semestralka
             {
                 buttonNastavit.PerformClick();
             }
+        }
+
+        private void NastaveniPrijmu_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

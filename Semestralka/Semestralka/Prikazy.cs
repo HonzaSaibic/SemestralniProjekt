@@ -253,5 +253,55 @@ namespace Semestralka
             }
         }
 
+        public void SmazaniJidla (string jmeno)
+        {
+            try
+            {
+                pripojeni.ConnectionString = databaze.ulozeniDatabaze();
+                pripojeni.Open();
+                string delete = "DELETE FROM jidlo WHERE jmeno='" + jmeno.ToLower() + "'";
+                SQLiteCommand prikaz = new SQLiteCommand(delete, pripojeni);
+                prikaz.ExecuteNonQuery();
+                pripojeni.Close();
+            }
+            finally
+            {
+                pripojeni.Close();
+            }
+        }
+
+        public DataTable NacteniDatabaze()
+        {
+            pripojeni.ConnectionString = databaze.ulozeniDatabaze();
+            pripojeni.Open();
+            try
+            {
+                SQLiteCommand select = new SQLiteCommand("SELECT jmeno AS Jidlo ,kalorie AS 'Kcal', proteiny AS 'Protein na 100g',sacharidy AS 'Sacharidy na 100g',tuky AS 'Tuky na 100g' FROM jidlo", pripojeni);
+                SQLiteDataAdapter da = new SQLiteDataAdapter();
+                DataTable dt = new DataTable();
+                da.SelectCommand = select;
+                da.Fill(dt);
+                if (dt.Rows.Count > 0)
+                {
+                    pripojeni.Close();
+                    return dt;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                pripojeni.Close();
+            }
+
+
+        }
+
     }
 }
